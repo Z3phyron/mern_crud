@@ -51,7 +51,7 @@ app.use("/blogs", blogs);
 
 // db setup
 mongoose
-  .connect(process.env.MONGO_URI, {
+  .connect(DataBase, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -63,7 +63,7 @@ mongoose
   });
 
 // Serve client
-if (process.env.NODE_ENV === "production") {
+if (NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/dist")));
 
   app.get("*", (req, res) =>
